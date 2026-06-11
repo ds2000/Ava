@@ -52,21 +52,15 @@ This feature alone is worth trying if you've struggled with Bluetooth coverage i
 
 ---
 
-## Floating Windows - Visual Differentiation
+## Voice Messages & Calls - Local Home Intercom
 
-This is what makes Ava visually unique. **Floating windows overlay on top of any app** - display a full-screen HA dashboard while still seeing clock, weather, and notifications overlaid on top.
+Turn multiple Ava devices into a simple voice network inside your home. Send a quick voice message to another room, keep messages on a small message board, or start a live call between Ava devices on the same local network.
 
-Other apps force you to choose: dashboard or clock. With Ava, you get both.
+**Features:** **Voice Messages** - Record and send short messages to selected Ava devices. **Message Board** - Keep received messages on screen and replay them later. **Live Calls** - Call another Ava device directly for room-to-room conversation. **Local Network First** - Designed for LAN use, without a cloud account or external relay.
 
-*   `Always Visible` Overlays on any app, including full-screen browsers.
-*   `HA Control` Remotely toggle each window from Home Assistant.
-*   `Non-Intrusive` Designed to complement, not block the main interface.
+**Why This Matters:** A wall tablet should not only listen to Home Assistant. It should also help people at home talk to each other. Ava can become a kitchen-to-living-room intercom, a bedside message board, or a quick way to call the study without picking up a phone.
 
-Available floating windows:
-`Dream Clock` Elegant always-on clock.
-`Vinyl Cover` Rotating record cover when playing music.
-`Conversation Subtitles` Shows what you said and AI responses.
-`Notification Scenes` Full-screen alerts for doorbell, alarms, etc.
+**Home Use Cases:** Kitchen says dinner is ready → living room Ava plays the message. Parent leaves a delayed reminder for a child's room → message stays available for replay. Bedroom calls the hallway panel → quick conversation without phones or extra apps.
 
 ---
 
@@ -105,15 +99,6 @@ Android 7.0 or higher. Home Assistant connection required.
 2. Search and add **ESPHome** integration.
 3. Ava will be discovered automatically, tap **Configure**.
 
-**In Ava app:**
-1. Open Ava app.
-2. Tap the **Settings** icon in the top right.
-3. Select **Voice Satellite**.
-4. Tap **Start Service**.
-
-**After successful connection:**
-Status bar will show "Connected". You can see this device in Home Assistant.
-
 ### Step 3: Talk!
 
 Say the wake word (default is "Hey Jarvis"), then say your command: "Turn on the living room light". "What time is it". "Play music". "What's the weather tomorrow".
@@ -138,12 +123,6 @@ Better background protection, boot scripts, screen control, reboot. Works withou
 
 ---
 
-## Stability
-
-Optimized for 24/7 operation: `battery optimization exemption` `WiFi wake lock` `auto-reconnect` `boot auto-start` `auto-recovery when killed`.
-
----
-
 ## Credits
 
 *   Original Project: [brownard/Ava](https://github.com/brownard/Ava)
@@ -152,4 +131,4 @@ Optimized for 24/7 operation: `battery optimization exemption` `WiFi wake lock` 
 
 ---
 
-*Last Updated: 2026-03-12*
+*Last Updated: 2026-06-11*
