@@ -1,7 +1,7 @@
 name: Contribution
 description: Offer help - translations, testing, documentation, ideas, or feedback
 title: "[Contribution] "
-labels: ["contribution"]
+labels: ["contribution", "help wanted"]
 body:
   - type: markdown
     attributes:

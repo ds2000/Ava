@@ -1,7 +1,7 @@
 name: Feature Request
 description: Suggest a new feature or an improvement to Ava
 title: "[Feature] "
-labels: ["feature"]
+labels: ["feature", "help wanted"]
 body:
   - type: markdown
     attributes:
@@ -70,7 +70,7 @@ body:
         - "Android 10 - 12"
         - "Android 13 - 16"
         - "All supported versions"
-      default: 4
+      default: [4]
     validations:
       required: true
   - type: textarea
