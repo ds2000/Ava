@@ -70,7 +70,6 @@ body:
         - "Android 10 - 12"
         - "Android 13 - 16"
         - "All supported versions"
-      default: [4]
     validations:
       required: true
   - type: textarea
