@@ -4,8 +4,6 @@
 ![GitHub Downloads](https://img.shields.io/github/downloads/knoop7/ava/total?style=for-the-badge&logo=github&color=0D1117&labelColor=21262d&logoColor=white&label=DOWNLOADS)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/knoop7)
 
-
-
 For more practical guides, visit the [Wiki](https://deepwiki.com/knoop7/Ava).
 
 
@@ -15,69 +13,84 @@ Share a project I've been working on: **Ava**, an Android voice assistant app th
 
 This project is based on [brownard/Ava](https://github.com/brownard/Ava) with extensive modifications and extensions. The original was a great ESPHome voice satellite implementation, but with basic features. I researched existing solutions: [Fully Kiosk](https://www.fully-kiosk.com/) is powerful but paid. [WallPanel](https://wallpanel.xyz/) is no longer maintained. The Android smart home panel space has been stagnant for years. So I decided to combine the best of these projects, using Ava as the foundation to build something truly useful.
 
-## Core Philosophy
+One Android device can become a voice satellite, Bluetooth proxy node, local intercom, floating overlay display, and smart control panel.
 
-`No Extra Integrations`
-No MQTT, no HACS. Devices are discovered natively by Home Assistant, just like ESPHome nodes.
-
-`Built for Low-End Hardware`
-Supports Android 5–16, including 32-bit devices. Cheap tablets and old phones work reliably.
+Ava Pro does not require MQTT, HACS, or a custom Home Assistant integration. It is discovered through the ESPHome flow, and the core APK is designed to stay under 20 MB so old and low-end devices remain practical.
 
 ---
 
-## Bluetooth Proxy - Exclusive Feature
+### Floating Overlays
 
-**This is a feature no other Android panel app has.**
+Ava Pro does not need to take over the whole screen. It can run as a background satellite service and show floating windows over other Android apps, including official apps, fullscreen dashboards, media players, browser panels, and normal Android apps.
 
-Your Android device becomes a complete Bluetooth gateway, extending Home Assistant's Bluetooth coverage. No ESP32 needed - just use your spare Android device!
+This lets you keep using the app already on screen while Ava Pro shows voice replies, subtitles, clocks, weather, media feedback, quick controls, and assistant responses above it.
 
-**Features:**
-`BLE Proxy` Forwards all Bluetooth Low Energy data to Home Assistant.
-`Whole-Home Coverage` Deploy multiple Ava devices, each extends Bluetooth range.
-`Presence Detection` Auto-detect phones, smartwatches, bands; trigger home/away automations.
-`All BLE Devices Compatible` Temperature sensors, plant monitors, smart locks, all supported.
-
-**Why This Matters:**
-ESP32 Bluetooth proxies need firmware flashing and configuration. Ava works out of the box - your Android device is already a powerful Bluetooth transceiver. Perfect for apartments or multi-story homes where one Bluetooth source isn't enough. Turn that dusty old tablet in the bedroom into a Bluetooth relay point.
-
-**Presence Detection Use Cases:**
-Phone enters Bluetooth range → Auto lights on, AC on, play welcome message. Phone leaves for a while → Auto lights off, security mode on. Detect specific family member devices → Personalized scene triggers. Adjustable RSSI threshold and away delay for precise sensitivity control.
-
-This feature alone is worth trying if you've struggled with Bluetooth coverage in Home Assistant.
-
-> **Note:** Bluetooth proxy source code is not open source, only available in release builds. All other feature code is available on GitHub.
 
 ---
 
-## Voice Messages & Calls - Local Home Intercom
+## Core Benefits
 
-Turn multiple Ava devices into a simple voice network inside your home. Send a quick voice message to another room, keep messages on a small message board, or start a live call between Ava devices on the same local network.
-
-**Features:** **Voice Messages** - Record and send short messages to selected Ava devices. **Message Board** - Keep received messages on screen and replay them later. **Live Calls** - Call another Ava device directly for room-to-room conversation. **Local Network First** - Designed for LAN use, without a cloud account or external relay.
-
-**Why This Matters:** A wall tablet should not only listen to Home Assistant. It should also help people at home talk to each other. Ava can become a kitchen-to-living-room intercom, a bedside message board, or a quick way to call the study without picking up a phone.
-
-**Home Use Cases:** Kitchen says dinner is ready → living room Ava plays the message. Parent leaves a delayed reminder for a child's room → message stays available for replay. Bedroom calls the hallway panel → quick conversation without phones or extra apps.
+| Benefit | What it means |
+|---|---|
+| **Bluetooth Proxy** | Reuse Android Bluetooth hardware to extend Home Assistant Bluetooth coverage |
+| **Local Voice Network** | Send voice messages or start room-to-room calls between Ava Pro devices on your LAN |
+| **Floating Overlay UI** | Show assistant feedback, clocks, weather, media, and controls over other Android apps |
+| **Privacy-conscious** | Voice messages and calls are local-first; voiceprint learning stays on the device |
+| **Lightweight Core** | Designed to keep the core APK under 20 MB for older Android devices |
 
 ---
 
-## What is Ava?
+## Key Features
 
-Ava is a voice assistant app based on the ESPHome protocol. It turns your Android device into a voice satellite for Home Assistant.
+### 1. Bluetooth Proxy & Room Presence
 
-**What can you do with it?**
-Control smart home devices with voice (lights, AC, music, etc.). Display beautiful screensavers and clocks. Show real-time weather information. Display full-screen notifications (doorbell, alerts, etc.). Play music with album cover display. Take photos and stream video.
+Ava Pro turns spare Android devices into distributed Bluetooth coverage nodes for Home Assistant. Instead of buying and flashing ESP32 Bluetooth proxies for every room, you can reuse Android devices you already have.
 
-Put your old phone or tablet at home, and it becomes a smart control panel!
+This helps Home Assistant see BLE sensors, wearables, tags, plant sensors, temperature sensors, locks, and presence devices that may be too far from the main server.
 
-**System Requirements:**
-Android 7.0 or higher. Home Assistant connection required.
+| Feature | What it does | Why it helps |
+|---|---|---|
+| **BLE Proxy** | Extends Home Assistant Bluetooth coverage | Uses Android devices already placed around the home |
+| **Presence Detection** | Detects phones, watches, bands, and tags | Enables room-aware or home/away automations |
+| **RSSI Threshold** | Tunes Bluetooth distance sensitivity | Reduces false room detection |
+| **Away Delay** | Delays away state after signal loss | Prevents brief Bluetooth drops from triggering false exits |
+| **Scan Power Control** | Adjusts scan strength | Balances responsiveness, heat, power use, and device performance |
+| **Multi-device Coverage** | Uses several Ava Pro devices as coverage points | Improves Bluetooth visibility across rooms or floors |
 
-> This makes Ava suitable for turning *any* phone or tablet into a native-looking Home Assistant panel, consistent with the rest of your HA ecosystem.
+> Bluetooth proxy source code is not open source and is only available in release builds.
 
-> Ava does not impose a custom UI identity.
-> Instead, it deliberately follows Home Assistant’s visual language and iconography.
-> This ensures that any device running Ava feels like an extension of Home Assistant itself, not a third-party layer on top.
+### 2. Local Voice Messages & Calls
+
+Ava Pro devices can communicate directly on the local network. A kitchen panel can send a voice message to a bedroom display, a hallway tablet can call the living room, and a bedside device can keep a replayable voice note for later.
+
+This makes Ava Pro more than a voice satellite. It can also act as a lightweight home intercom for families, shared spaces, reminders, elderly care, and always-on wall panels.
+
+| Feature | What it does | Why it helps |
+|---|---|---|
+| **Voice Messages** | Sends short voice notes between Ava Pro devices | Useful for quick room-to-room messages |
+| **Message Board** | Keeps received messages visible and replayable | Helps family members see missed messages |
+| **Live Calls** | Starts real-time calls between Ava Pro devices | Turns panels into a simple home intercom |
+| **Delayed Messages** | Shows or plays messages later | Useful for reminders and scheduled notices |
+| **LAN-first Design** | Works without a cloud relay for local calls/messages | Keeps local home communication simple and private |
+
+---
+
+## Feature Overview
+
+| Area | Included features |
+|---|---|
+| **Voice Satellite** | Wake word, dual wake word, voiceprint, Home Assistant voice pipeline, continuous conversation, wake sound, mic gain |
+| **Audio Processing** | Noise suppression, AGC, hardware AEC, software AEC, audio source modes, audio profiles |
+| **Browser & View Assist** | WebView browser, optional GeckoView engine, View Assist frontend, browser scale, touch controls, overlay response UI |
+| **Floating Overlays** | Dream Clock, Simple Clock, Weather, Subtitles, Vinyl/media overlay, Light Switch overlay, Quick Entity panel, global overlay back button |
+| **Scenes & Screensaver** | Notification scenes, custom scene URL, scene duration, notification sound, screensaver URL, idle display |
+| **Music & Media** | Music Assistant display, Home Assistant media state, album art, media overlay, Sendspin playback |
+| **Device Controls** | Screen toggle, lock display, brightness, orientation, keep screen on, display size/scale |
+| **Sensors & Camera** | Light, proximity, battery, Wi-Fi, storage, memory, uptime, snapshot, recording, face detection |
+| **Android Integration** | Sidebar, app launcher, intent launcher, auto update, AvaMod / Mod Store, Portal support |
+| **Permissions** | Normal Android permissions, overlay, Shizuku, Root, Device Admin support |
+
+Most features are configured from `Settings`, including `Voice Config`, `Bluetooth`, `Extensions`, `Web Browser`, `Media Player`, `Device Controls`, `Screensaver`, `Sidebar`, `Permissions`, and `Mod Store`.
 
 ---
 
@@ -85,47 +98,47 @@ Android 7.0 or higher. Home Assistant connection required.
 
 ### Step 1: Install
 
-1. Download the Ava APK file from [GitHub Releases](https://github.com/knoop7/Ava/releases) Built-in auto-update feature.
-2. Tap to install.
-3. Allow all permission requests (microphone, overlay, etc.).
+Download the latest APK from [GitHub Releases](https://github.com/knoop7/Ava/releases), install it on your Android device, and grant the required permissions.
 
 ### Step 2: Connect to Home Assistant
 
-**In Home Assistant:**
-1. Go to **Settings** → **Devices & Services** → **Integrations**.
-2. Search and add **ESPHome** integration.
-3. Ava will be discovered automatically, tap **Configure**.
+In Home Assistant, go to **Settings -> Devices & Services -> Integrations**, add **ESPHome**, and configure the discovered Ava Pro device.
 
-### Step 3: Talk!
+### Step 3: Use Ava Pro
 
-Say the wake word (default is "Hey Jarvis"), then say your command: "Turn on the living room light". "What time is it". "Play music". "What's the weather tomorrow".
+Enable the wake word, open your dashboard, turn on Bluetooth proxy, use floating overlays, send voice messages, or set up local room-to-room calls depending on your device and setup.
+
+---
+
+## Requirements
+
+Android 5.0 or higher is supported. Home Assistant is required. Some advanced features depend on device hardware, Android version, permissions, Shizuku, root, or optional AvaMod modules.
+
+Ava Pro works without root for normal use. Shizuku or root can unlock deeper device control where the device allows it.
 
 ---
 
 ## Permissions
 
-**Required:**
-`Microphone` To hear you speak.
-`Overlay` To show screensaver, notifications, weather, etc.
-`Foreground Service` To keep service running.
-
-**Optional:**
-`Camera` For photos and video.
-`Bluetooth` To detect if you're home.
-`Location` Required for Bluetooth scanning.
-`System Settings` Screen brightness control.
-
-**Root (Recommended):**
-Better background protection, boot scripts, screen control, reboot. Works without Root, but more stable with it.
+| Permission | Used for |
+|---|---|
+| **Microphone** | Voice satellite, wake word, voice messages, and calls |
+| **Overlay Window** | Floating clocks, subtitles, browser overlays, scenes, and media controls |
+| **Foreground Service** | Keeps the satellite service running in the background |
+| **Network** | Home Assistant connection, discovery, Sendspin, and local calls |
+| **Bluetooth / Location** | Bluetooth proxy and BLE presence detection |
+| **Camera** | Snapshots, video, and face detection |
+| **System Settings** | Brightness, orientation, screen control, and display behavior |
+| **Shizuku / Root / Device Admin** | Optional deeper control on supported devices |
 
 ---
 
-## Credits
+## Lineage & Credits
 
-*   Original Project: [brownard/Ava](https://github.com/brownard/Ava)
-*   ESPHome: https://esphome.io/
-*   Home Assistant: https://www.home-assistant.io/
+Ava Pro is based on the original [brownard/Ava](https://github.com/brownard/Ava) project and has been significantly expanded for practical Home Assistant Android satellite use.
+
+Powered by [ESPHome](https://esphome.io/) and designed for the [Home Assistant](https://www.home-assistant.io/) ecosystem.
 
 ---
 
-*Last Updated: 2026-06-14*
+*Last Updated: 2026-06-22*
