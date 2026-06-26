@@ -59,7 +59,19 @@ This helps Home Assistant see BLE sensors, wearables, tags, plant sensors, tempe
 
 > Bluetooth proxy source code is not open source and is only available in release builds.
 
-### 2. Local Voice Messages & Calls
+### 2. On-Device Voice Intelligence
+
+Ava Pro runs multiple on-device AI models for voice interaction — all processing happens locally, no cloud required.
+
+| Feature | What it does | Why it helps |
+|---|---|---|
+| **Custom Wake Words** | Import and use custom wake word models (microWakeWord, vsWakeWord formats) | Personalize the wake word without relying on cloud services |
+| **Dual Wake Word** | Run two wake word engines simultaneously | Flexibility for different family members or languages |
+| **Voiceprint Recognition** | Learn and identify family members by voice | Trigger personalized automations based on who is speaking |
+| **Audio Event Detection** | Detect environmental sounds (glass breaking, baby crying, alarm, dog barking, coughing, doorbell, knocking) | Trigger automations from non-voice sounds around the home |
+| **On-Device Processing** | All voice models run locally on the Android device | Privacy-first — no audio leaves the device |
+
+### 3. Local Voice Messages & Calls
 
 Ava Pro devices can communicate directly on the local network. A kitchen panel can send a voice message to a bedroom display, a hallway tablet can call the living room, and a bedside device can keep a replayable voice note for later.
 
@@ -79,7 +91,7 @@ This makes Ava Pro more than a voice satellite. It can also act as a lightweight
 
 | Area | Included features |
 |---|---|
-| **Voice Satellite** | Wake word, dual wake word, voiceprint, Home Assistant voice pipeline, continuous conversation, wake sound, mic gain |
+| **Voice Satellite** | Wake word, dual wake word, custom wake word import, voiceprint recognition, audio event detection, Home Assistant voice pipeline, continuous conversation, wake sound, mic gain |
 | **Audio Processing** | Noise suppression, AGC, hardware AEC, software AEC, audio source modes, audio profiles |
 | **Browser & View Assist** | WebView browser, optional GeckoView engine, View Assist frontend, browser scale, touch controls, overlay response UI |
 | **Floating Overlays** | Dream Clock, Simple Clock, Weather, Subtitles, Vinyl/media overlay, Light Switch overlay, Quick Entity panel, global overlay back button |
@@ -141,4 +153,4 @@ Powered by [ESPHome](https://esphome.io/) and designed for the [Home Assistant](
 
 ---
 
-*Last Updated: 2026-06-22*
+*Last Updated: 2026-06-27*
