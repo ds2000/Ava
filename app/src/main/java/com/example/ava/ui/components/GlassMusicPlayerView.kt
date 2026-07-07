@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.*
@@ -99,9 +100,10 @@ fun GlassMusicPlayerView(
         label = "glowScale"
     )
     
-    // Background blur/opacity transition based on playing state
-    val targetBlur = if (isPlaying) 0.dp else 20.dp
-    val targetOpacity = if (isPlaying) 0.7f else 0.4f
+    // Background stays softly blurred at all times so the cover reads as an ambient wash,
+    // not a full-bleed cropped image. The sharp, un-cropped cover is shown boxed in the foreground.
+    val targetBlur = if (isPlaying) 28.dp else 20.dp
+    val targetOpacity = if (isPlaying) 0.6f else 0.4f
     
     val backgroundBlur by animateDpAsState(targetValue = targetBlur, animationSpec = tween(800), label = "blur")
     val backgroundOpacity by animateFloatAsState(targetValue = targetOpacity, animationSpec = tween(800), label = "opacity")
@@ -198,50 +200,58 @@ fun GlassMusicPlayerView(
         val topPadding = if (isLandscape) 60.dp else 80.dp
         val bottomPadding = if (isLandscape) 40.dp else 60.dp
         
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(start = horizontalPadding, end = horizontalPadding, top = topPadding, bottom = bottomPadding),
-            verticalArrangement = Arrangement.Bottom
-        ) {
-
-            Column(modifier = Modifier.padding(bottom = 10.dp)) {
-                ShimmerText(
-                    text = songTitle,
-                    modifier = Modifier.padding(bottom = 10.dp)
-                )
-                
-                Column {
-                    Text(
-                        text = artistName,
-                        color = Color.White.copy(alpha = 0.55f),
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Normal,
-                        letterSpacing = 0.5.sp
-                    )
-                    Spacer(modifier = Modifier.height(6.dp))
-                    Box(
-                        modifier = Modifier
-                            .width(40.dp)
-                            .height(2.dp)
-                            .background(
-                                Color.White.copy(alpha = 0.3f),
-                                RoundedCornerShape(4.dp)
-                            )
+        // Boxed, CONTAINED album cover (never cropped) — the sharp hero artwork.
+        // Fixes full-bleed cropping: the cover is fit inside a rounded square instead of
+        // filling/cropping the whole screen (that role is now the soft blurred backdrop).
+        val albumCover: @Composable (Modifier) -> Unit = { coverModifier ->
+            Box(
+                modifier = coverModifier
+                    .aspectRatio(1f)
+                    .shadow(22.dp, RoundedCornerShape(18.dp))
+                    .clip(RoundedCornerShape(18.dp))
+                    .background(Color(0xFF0B0906))
+            ) {
+                if (coverBitmap != null) {
+                    androidx.compose.foundation.Image(
+                        bitmap = coverBitmap.asImageBitmap(),
+                        contentDescription = "Album cover",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxSize()
                     )
                 }
             }
-            
-            
-            Spacer(modifier = Modifier.height(20.dp))
+        }
 
+        val trackInfo: @Composable () -> Unit = {
+            ShimmerText(
+                text = songTitle,
+                modifier = Modifier.padding(bottom = 10.dp)
+            )
+            Text(
+                text = artistName,
+                color = Color.White.copy(alpha = 0.55f),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Normal,
+                letterSpacing = 0.5.sp
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Box(
+                modifier = Modifier
+                    .width(40.dp)
+                    .height(2.dp)
+                    .background(
+                        Color.White.copy(alpha = 0.3f),
+                        RoundedCornerShape(4.dp)
+                    )
+            )
+        }
 
+        val controls: @Composable () -> Unit = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = if (isLandscape) Arrangement.Center else Arrangement.SpaceEvenly,
+                horizontalArrangement = if (isLandscape) Arrangement.Start else Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
                 ControlButton(onClick = onShuffleClick) {
                     IconWithShadow(
                         imageVector = Icons.Filled.Shuffle,
@@ -250,10 +260,7 @@ fun GlassMusicPlayerView(
                         size = if (isLandscape) 28.dp else 24.dp
                     )
                 }
-                
-                if (isLandscape) Spacer(modifier = Modifier.width(40.dp))
-                
-
+                if (isLandscape) Spacer(modifier = Modifier.width(32.dp))
                 ControlButton(onClick = onPreviousClick) {
                     IconWithShadow(
                         imageVector = Icons.Filled.SkipPrevious,
@@ -262,18 +269,12 @@ fun GlassMusicPlayerView(
                         size = if (isLandscape) 36.dp else 30.dp
                     )
                 }
-                
-                if (isLandscape) Spacer(modifier = Modifier.width(40.dp))
-                
-                // Play/Pause
+                if (isLandscape) Spacer(modifier = Modifier.width(32.dp))
                 GlassPlayButton(
                     isPlaying = isPlaying,
                     onClick = onPlayPauseClick
                 )
-                
-                if (isLandscape) Spacer(modifier = Modifier.width(40.dp))
-                
-
+                if (isLandscape) Spacer(modifier = Modifier.width(32.dp))
                 ControlButton(onClick = onNextClick) {
                     IconWithShadow(
                         imageVector = Icons.Filled.SkipNext,
@@ -282,10 +283,7 @@ fun GlassMusicPlayerView(
                         size = if (isLandscape) 36.dp else 30.dp
                     )
                 }
-                
-                if (isLandscape) Spacer(modifier = Modifier.width(40.dp))
-                
-
+                if (isLandscape) Spacer(modifier = Modifier.width(32.dp))
                 ControlButton(onClick = onRepeatClick) {
                     when (repeatMode) {
                         "one" -> IconWithShadow(
@@ -308,6 +306,42 @@ fun GlassMusicPlayerView(
                         )
                     }
                 }
+            }
+        }
+
+        if (isLandscape) {
+            // Landscape: boxed cover on the left, track info + controls on the right.
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = horizontalPadding, vertical = bottomPadding),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(48.dp)
+            ) {
+                albumCover(Modifier.fillMaxHeight(0.78f))
+                Column(modifier = Modifier.weight(1f)) {
+                    trackInfo()
+                    Spacer(modifier = Modifier.height(28.dp))
+                    controls()
+                }
+            }
+        } else {
+            // Portrait: boxed cover on top, track info + controls below.
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = horizontalPadding, end = horizontalPadding, top = topPadding, bottom = bottomPadding),
+                verticalArrangement = Arrangement.Bottom
+            ) {
+                albumCover(
+                    Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .fillMaxWidth(0.62f)
+                        .padding(bottom = 28.dp)
+                )
+                trackInfo()
+                Spacer(modifier = Modifier.height(20.dp))
+                controls()
             }
         }
     }
