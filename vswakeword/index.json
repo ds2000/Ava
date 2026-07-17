@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "baseUrl": "https://raw.githubusercontent.com/knoop7/Ava/master/vswakeword/",
+  "models": [
+    {
+      "id": "alexa",
+      "name": "Alexa",
+      "json": "alexa.json",
+      "onnx": "alexa.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_alfred",
+      "name": "Hey Alfred",
+      "json": "hey_alfred.json",
+      "onnx": "hey_alfred.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_home_assistant",
+      "name": "Hey Home Assistant",
+      "json": "hey_home_assistant.json",
+      "onnx": "hey_home_assistant.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_jarvis",
+      "name": "Hey Jarvis",
+      "json": "hey_jarvis.json",
+      "onnx": "hey_jarvis.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_luna",
+      "name": "Hey Luna",
+      "json": "hey_luna.json",
+      "onnx": "hey_luna.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_mycroft",
+      "name": "Hey Mycroft",
+      "json": "hey_mycroft.json",
+      "onnx": "hey_mycroft.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "hey_vesta",
+      "name": "Hey Vesta",
+      "json": "hey_vesta.json",
+      "onnx": "hey_vesta.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "ok_computer",
+      "name": "Ok Computer",
+      "json": "ok_computer.json",
+      "onnx": "ok_computer.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "ok_luna",
+      "name": "Ok Luna",
+      "json": "ok_luna.json",
+      "onnx": "ok_luna.onnx",
+      "stop_classifier": false
+    },
+    {
+      "id": "ok_vesta",
+      "name": "Ok Vesta",
+      "json": "ok_vesta.json",
+      "onnx": "ok_vesta.onnx",
+      "stop_classifier": false
+    }
+  ]
+}
