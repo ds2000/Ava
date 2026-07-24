@@ -157,7 +157,7 @@
         "ə"
       ]
     ],
-    "max_edit_distance": 3,
+    "max_edit_distance": 4,
     "wake_word_trail_tolerance": 4,
     "min_matched_confidence": 1.5,
     "target_max_edit_distance": [
@@ -185,5 +185,6 @@
     "stream_match": true,
     "stream_buffer_ms": 3000,
     "stream_lag_frames": 28
-  }
+  },
+  "ava_usability_profile": "ok_nabu_v4"
 }
