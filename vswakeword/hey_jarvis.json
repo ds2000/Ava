@@ -1,7 +1,7 @@
 {
   "name": "hey_jarvis",
   "format": "vs-wake-word-ctc-v1",
-  "recommended_threshold": 0.5,
+  "recommended_threshold": 0.4,
   "input": {
     "name": "input",
     "shape": [
@@ -288,58 +288,44 @@
       ]
     ],
     "wake_word_target_anchors": [
-      [
-        9
-      ],
-      [
-        8
-      ],
-      [
-        9
-      ],
-      [
-        8
-      ],
-      [
-        8
-      ],
-      [
-        8
-      ],
-      [
-        7
-      ]
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
     ],
     "max_edit_distance": 3,
-    "wake_word_trail_tolerance": 3,
-    "min_matched_confidence": 2.0,
+    "wake_word_trail_tolerance": 4,
+    "min_matched_confidence": 1.5,
     "target_max_edit_distance": [
       3,
-      2,
-      2,
-      2,
       3,
-      2,
-      2
+      3,
+      3,
+      3,
+      3,
+      3
     ],
     "target_min_matched_confidence": [
-      2.0,
-      2.0,
-      2.0,
-      2.0,
-      2.0,
-      2.0,
-      2.0
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5,
+      1.5
     ]
   },
   "runtime": {
     "required_hits": 1,
     "hit_mode": "consecutive",
-    "cooldown_ms": 2000,
-    "high_confidence_bypass": 4.5,
+    "cooldown_ms": 1500,
+    "high_confidence_bypass": 3.5,
     "high_confidence_bypass_min_hits": 1,
     "stream_match": true,
-    "stream_buffer_ms": 3500,
-    "stream_lag_frames": 24
+    "stream_buffer_ms": 4000,
+    "stream_lag_frames": 28
   }
 }
