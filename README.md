@@ -1,3 +1,5 @@
+<img width="2555" height="1011" alt="Ava Pro Pixel-Art Banner" src="https://github.com/user-attachments/assets/3a0adaa7-5803-4ede-b32e-c5bc082820a8" />
+
 # Ava Pro · Home Assistant's Android Companion
 
 [![DeepWiki](https://img.shields.io/badge/DeepWiki-AI_Docs-003366?style=for-the-badge&labelColor=002244&logoColor=white)](https://deepwiki.com/knoop7/Ava)
