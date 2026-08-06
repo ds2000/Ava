@@ -106,10 +106,22 @@ class VideoCapture(private val context: Context) {
     
     private fun selectCamera(provider: ProcessCameraProvider, useFront: Boolean): CameraSelector {
         val preferred = if (useFront) CameraSelector.DEFAULT_FRONT_CAMERA else CameraSelector.DEFAULT_BACK_CAMERA
-        return runCatching {
-            preferred.filter(provider.availableCameraInfos)
-            preferred
-        }.getOrElse { CameraSelector.Builder().build() }
+        val fallback = if (useFront) CameraSelector.DEFAULT_BACK_CAMERA else CameraSelector.DEFAULT_FRONT_CAMERA
+
+        val availableCameras = runCatching { provider.availableCameraInfos }.getOrElse { emptyList() }
+
+        for (selector in listOf(preferred, fallback)) {
+            val matches = runCatching { selector.filter(availableCameras) }.getOrElse { emptyList() }
+            if (matches.isNotEmpty()) {
+                if (selector !== preferred) {
+                    Log.w(TAG, "Preferred camera (front=$useFront) not present, falling back to the other lens")
+                }
+                return selector
+            }
+        }
+
+        Log.w(TAG, "Neither front nor back camera matched, using an unconstrained selector")
+        return CameraSelector.Builder().build()
     }
     
     private fun processFrame(imageProxy: ImageProxy) {
