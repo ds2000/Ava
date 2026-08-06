@@ -183,14 +183,27 @@ class CameraCapture(private val context: Context) {
             true -> CameraSelector.DEFAULT_FRONT_CAMERA
             false -> CameraSelector.DEFAULT_BACK_CAMERA
         }
-        
-        return runCatching {
-            preferredSelector.filter(provider.availableCameraInfos)
-            preferredSelector
-        }.getOrElse {
-            
-            CameraSelector.Builder().build()
+        val fallbackSelector = when (useFrontCamera) {
+            true -> CameraSelector.DEFAULT_BACK_CAMERA
+            false -> CameraSelector.DEFAULT_FRONT_CAMERA
         }
+
+        val availableCameras = runCatching { provider.availableCameraInfos }.getOrElse { emptyList() }
+
+
+        for (selector in listOf(preferredSelector, fallbackSelector)) {
+            val matches = runCatching { selector.filter(availableCameras) }.getOrElse { emptyList() }
+            if (matches.isNotEmpty()) {
+                if (selector !== preferredSelector) {
+                    Log.w(TAG, "Preferred camera (front=$useFrontCamera) not present, falling back to the other lens")
+                }
+                return selector
+            }
+        }
+
+
+        Log.w(TAG, "Neither front nor back camera matched, using an unconstrained selector")
+        return CameraSelector.Builder().build()
     }
     
     
