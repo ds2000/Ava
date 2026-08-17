@@ -45,7 +45,11 @@
       "project": "openWakeWord",
       "author": "David Scripka (dscripka)",
       "license": "CC-BY-NC-SA-4.0",
-      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "openwakeword": {
+        "threshold": 0.6,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_jarvis",
@@ -58,7 +62,11 @@
       "project": "openWakeWord",
       "author": "David Scripka (dscripka)",
       "license": "CC-BY-NC-SA-4.0",
-      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_mycroft",
@@ -71,7 +79,11 @@
       "project": "openWakeWord",
       "author": "David Scripka (dscripka)",
       "license": "CC-BY-NC-SA-4.0",
-      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "openwakeword": {
+        "threshold": 0.7,
+        "required_hits": 1
+      }
     },
     {
       "id": "ok_nabu",
@@ -84,7 +96,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_home_assistant",
@@ -97,7 +113,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_luna",
@@ -110,7 +130,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_alfred",
@@ -123,7 +147,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.7,
+        "required_hits": 1
+      }
     },
     {
       "id": "ok_computer",
@@ -136,7 +164,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.65,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_rhasspy",
@@ -149,7 +181,11 @@
       "project": "openWakeWord",
       "author": "David Scripka (dscripka)",
       "license": "CC-BY-NC-SA-4.0",
-      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "openwakeword": {
+        "threshold": 0.65,
+        "required_hits": 1
+      }
     },
     {
       "id": "hey_nabu",
@@ -162,7 +198,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.6,
+        "required_hits": 1
+      }
     },
     {
       "id": "ok_jarvis",
@@ -175,7 +215,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "computer",
@@ -188,7 +232,11 @@
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.7,
+        "required_hits": 2
+      }
     },
     {
       "id": "xiao_ai",
@@ -196,12 +244,16 @@
       "file": "xiao_ai.onnx",
       "bytes": 206870,
       "sha256": "8ce6d2f3b9a092fa420762188d282dc3b26e242687fe1fbf11f41fd80eb26ccd",
-      "spoken": "小爱 (siao_ai)",
+      "spoken": "xiao ai",
       "source_url": "https://raw.githubusercontent.com/fwartner/home-assistant-wakewords-collection/main/zh/xiao_ai.onnx",
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "xiao_bu",
@@ -209,12 +261,16 @@
       "file": "xiao_bu.onnx",
       "bytes": 206870,
       "sha256": "8ba16868bb154644e95e6f415ff71763ffebbdacad1320baa7369055a412aa39",
-      "spoken": "小布 (siao_buu)",
+      "spoken": "xiao bu",
       "source_url": "https://raw.githubusercontent.com/fwartner/home-assistant-wakewords-collection/main/zh/xiao_bu.onnx",
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.5,
+        "required_hits": 1
+      }
     },
     {
       "id": "xiao_zhi",
@@ -222,12 +278,16 @@
       "file": "xiao_zhi.onnx",
       "bytes": 206871,
       "sha256": "437503a294b83ec1744595e1a52f9d8b4595a79363e86a46146105ba38032a1e",
-      "spoken": "小智 (siao_zirr)",
+      "spoken": "xiao zhi",
       "source_url": "https://raw.githubusercontent.com/fwartner/home-assistant-wakewords-collection/main/zh/xiao_zhi.onnx",
       "project": "Home Assistant Wake Word Collection",
       "author": "Home Assistant community, collected by Florian Wartner (fwartner)",
       "license": "MIT",
-      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE"
+      "license_url": "https://github.com/fwartner/home-assistant-wakewords-collection/blob/main/LICENSE",
+      "openwakeword": {
+        "threshold": 0.6,
+        "required_hits": 1
+      }
     }
   ]
 }
